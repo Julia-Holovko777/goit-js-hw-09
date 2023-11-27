@@ -10,6 +10,7 @@ const hour = document.querySelector('[data-hours]');
 const minute = document.querySelector('[data-minutes]');
 const second = document.querySelector('[data-seconds]');
 
+let timerId = null;
 btn.disabled = true;
 TIMER_DELAY = 1000;
 
@@ -35,7 +36,7 @@ function btnStartClick() {
   spans.forEach(item => item.classList.toggle('end'));
   btn.disabled = true;
   date.disabled = true;
-  const timer = setInterval(() => {
+  timerId = setInterval(() => {
     const futureDate = new Date(date.value);
     const finishTime = futureDate - Date.now();
     const { days, hours, minutes, seconds } = convertMs(finishTime);
@@ -46,10 +47,11 @@ function btnStartClick() {
 
     if (finishTime <= 1000) {
       spans.forEach(item.classList.toggle('end'));
-      clearInterval(timer);
+      clearInterval(timerId);
       date.disabled = false;
     }
   }, TIMER_DELAY);
+  n;
 }
 
 function convertMs(ms) {
