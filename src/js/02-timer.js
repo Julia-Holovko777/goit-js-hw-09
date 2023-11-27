@@ -51,7 +51,6 @@ function btnStartClick() {
       date.disabled = false;
     }
   }, TIMER_DELAY);
-  n;
 }
 
 function convertMs(ms) {
