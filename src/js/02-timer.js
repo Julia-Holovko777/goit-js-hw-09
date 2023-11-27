@@ -11,6 +11,7 @@ const minute = document.querySelector('[data-minutes]');
 const second = document.querySelector('[data-seconds]');
 
 let timerId = null;
+
 btn.disabled = true;
 const TIMER_DELAY = 1000;
 

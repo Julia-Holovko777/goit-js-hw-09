@@ -16,3 +16,42 @@ img {
   display: block;
   max-width: 100%;
 }
+#datetime-picker {
+  text-align: center;
+  border: solid #000 2px;
+  border-radius: 10px;
+  padding: 5px 0;
+  margin-right: 20px;
+  font-size: 1.5em;
+}
+
+button {
+  padding: 5px 15px;
+  border: solid rgb(132, 17, 233) 2px;
+  border-radius: 10px;
+  background-color: rgb(255, 251, 0);
+  font-size: 1em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.timer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  /* max-width: auto; */
+  background-color: rgb(0, 212, 240);
+  border-radius: 10px;
+  border: solid rgb(17, 89, 233) 2px;
+}
+
+.field {
+  font-weight: 400;
+}
+.field .value {
+  font-size: 3em;
+  color: #f6fa00;
+}
+
+.field .label {
+  color: #1e00e2;
+}
