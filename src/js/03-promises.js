@@ -11,17 +11,22 @@ function onFormSubmit(event) {
   let inputStep = Number(step.value);
   let inputAmount = Number(amount.value);
 
-  for (let i = 1; i <= inputAmount; i += 1) {
-    createPromise(i, inputDelay)
-      .then(({ position, delay }) => {
-        Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`);
-      })
-      .catch(({ position, delay }) => {
-        Notiflix.Notify.failure(`Rejected promise ${position} in ${delay}ms`);
-      });
-    inputDelay += inputStep;
+  if (inputDelay < 0 || inputStep < 0 || inputAmount < 0) {
+    Notiflix.Notify.warning(`Enter a number greater than 0`);
+  } else {
+    for (let i = 0; i < inputAmount; i++) {
+      createPromise(1 + i, inputDelay + i * inputStep)
+        .then(({ position, delay }) => {
+          Notiflix.Notify.success(
+            `Fulfilled promise ${position} in ${delay}ms`
+          );
+        })
+        .catch(({ position, delay }) => {
+          Notiflix.Notify.failure(`Rejected promise ${position} in ${delay}ms`);
+        });
+    }
   }
-  e.currentTarget.reset();
+  form.reset();
 }
 
 function createPromise(position, delay) {
