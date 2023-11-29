@@ -25,8 +25,8 @@ flatpickr(dateInput, {
       btn.disabled = true;
       Notiflix.Notify.failure('Please choose a date in the future');
     } else {
-      Notiflix.Notify.success('The countdown has started');
       btn.disabled = false;
+      Notiflix.Notify.success('The countdown has started');
     }
   },
 });
@@ -41,15 +41,16 @@ function btnStartClick() {
     const futureDate = new Date(dateInput.value);
     const finishTime = futureDate - Date.now();
     const { days, hours, minutes, seconds } = convertMs(finishTime);
+
     day.textContent = addLeadingZero(days);
     hour.textContent = addLeadingZero(hours);
     minute.textContent = addLeadingZero(minutes);
     second.textContent = addLeadingZero(seconds);
 
-    if (finishTime <= 1000) {
-      spans.forEach(item.classList.toggle('end'));
+    if (finishTime < 1000) {
+      spans.forEach(item => item.classList.toggle('end'));
       clearInterval(timerId);
-      date.disabled = false;
+      dateInput.disabled = false;
     }
   }, TIMER_DELAY);
 }
